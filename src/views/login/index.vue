@@ -21,8 +21,10 @@
         required
         />
         </van-cell-group>
+        <div class="login-btn-warp">
+          <van-button type="default">登陆</van-button>
+        </div>
 
-      <van-button type="default">登陆</van-button>
     </div>
 </template>
 
@@ -33,5 +35,16 @@ export default {
 </script>
 
 <style lang='less' scoped>
+    .login-container{
+        .login-btn-warp{
+            padding: 16px ;
+             .van-button{
+            width: 100%;
+            background-color: #3296fa;
+            color: white;
+            margin: 17px auto;
+            }
+        }
 
+    }
 </style>
