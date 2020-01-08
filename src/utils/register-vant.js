@@ -3,7 +3,10 @@ import Vue from 'vue'
 import { button,
   Cell,
   CellGroup,
-  Icon
+  Icon,
+  NavBar,
+  Field,
+  Button
 } from 'vant'
 
 // 注册
@@ -11,6 +14,9 @@ import { button,
 // Vue.use(button).use(Cell).use(CellGroup)
 
 Vue.use(button)
-Vue.use(Cell)
-Vue.use(CellGroup)
-Vue.use(Icon)
+  .use(Cell)
+  .use(CellGroup)
+  .use(Icon)
+  .use(NavBar)
+  .use(Field)
+  .use(Button)
