@@ -2,7 +2,8 @@
 import Vue from 'vue'
 import { button,
   Cell,
-  CellGroup
+  CellGroup,
+  Icon
 } from 'vant'
 
 // 注册
@@ -12,3 +13,4 @@ import { button,
 Vue.use(button)
 Vue.use(Cell)
 Vue.use(CellGroup)
+Vue.use(Icon)
