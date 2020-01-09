@@ -6,7 +6,8 @@ import { button,
   Icon,
   NavBar,
   Field,
-  Button
+  Button,
+  Toast
 } from 'vant'
 
 // 注册
@@ -20,3 +21,4 @@ Vue.use(button)
   .use(NavBar)
   .use(Field)
   .use(Button)
+  .use(Toast)
