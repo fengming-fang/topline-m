@@ -17,7 +17,14 @@
         left-icon="contact"
         placeholder="请输入验证码"
         >
+        <van-count-down
+          v-if="isCountDownShow"
+          slot="button"
+          :time="1000 * 60"
+          format="ss s"
+        />
         <van-button
+          v-else
           slot="button"
           size="small"
           type="primary"
@@ -44,7 +51,8 @@ export default {
       user: {
         mobile: '', // 手机号
         code: '' // 验证码
-      }
+      },
+      isCountDownShow: false // 是否显示倒计时
     }
   },
   computed: {},
