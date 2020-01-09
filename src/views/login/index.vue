@@ -33,7 +33,8 @@
 </template>
 
 <script>
-import request from '@/utils/request.js'
+// import request from '@/utils/request.js'
+import { login } from '@/api/user'
 export default {
   name: 'LoginPage',
   components: {},
@@ -65,17 +66,7 @@ export default {
 
       // 3. 请求登录
       try {
-        const res = await request({
-          method: 'POST',
-          url: '/app/v1_0/authorizations',
-          // headers: {
-          // axios 会自动添加该请求头
-          // 'Content-Type': 'application/json'
-          // }, // 请求头参数
-          // params: {}, // Query 查询参数
-          data: user // Body 请求体参数
-        })
-
+        const res = await login(user)
         console.log(res)
         this.$toast.success('登陆成功')
       } catch (err) {
@@ -97,6 +88,9 @@ export default {
             color: white;
             margin: 17px auto;
             }
+        }
+        .van-cell{
+            align-items: center
         }
 
     }
