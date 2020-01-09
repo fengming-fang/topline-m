@@ -5,32 +5,71 @@
 
         <van-cell-group>
         <van-field
-        v-model="username"
-        required
-        clearable
-        label="用户名"
-        placeholder="请输入用户名"
-        @click-right-icon="$toast('question')"
-        />
+        v-model="user.mobile"
+        left-icon="graphic"
+        placeholder="请输入手机号"
+        >
+        </van-field>
 
         <van-field
-        v-model="password"
+        v-model="user.code"
         type="password"
-        label="密码"
-        placeholder="请输入密码"
-        required
-        />
+        left-icon="contact"
+        placeholder="请输入验证码"
+        >
+        <van-button
+          slot="button"
+          size="small"
+          type="primary"
+          round
+        >发送验证码</van-button>
+        </van-field>
         </van-cell-group>
         <div class="login-btn-warp">
-          <van-button type="default">登陆</van-button>
+          <van-button type="default"  @click="onLogin">登陆</van-button>
         </div>
 
     </div>
 </template>
 
 <script>
+import request from '@/utils/request.js'
 export default {
-  name: 'LoginPage'
+  name: 'LoginPage',
+  components: {},
+  props: {},
+  data () {
+    return {
+      user: {
+        mobile: '', // 手机号
+        code: '' // 验证码
+      }
+    }
+  },
+  computed: {},
+  watch: {},
+  created () {},
+  mounted () {},
+  methods: {
+    async onLogin () {
+      // 1. 获取表单数据
+      const user = this.user
+      // 2. 表单验证
+      // 3. 请求登录
+      const res = await request({
+        method: 'POST',
+        url: '/app/v1_0/authorizations',
+        // headers: {
+        // axios 会自动添加该请求头
+        // 'Content-Type': 'application/json'
+        // }, // 请求头参数
+        // params: {}, // Query 查询参数
+        data: user // Body 请求体参数
+      })
+      console.log(res)
+      // 4. 根据后端返回结果执行后续业务处理
+    }
+  }
 }
 </script>
 
