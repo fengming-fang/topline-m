@@ -2,15 +2,20 @@
     <div class="login-container">
         <van-nav-bar title="登陆"/>
         <!--
-         表单验证
-         1、使用 ValidationObserver 组件把需要验证的整个表单包起来
-         2、使用 ValidationProvider 组件把具体的表单元素包起来，例如 input
+        表单验证
+        1、使用 ValidationObserver 组件把需要验证的整个表单包起来
+        2、使用 ValidationProvider 组件把具体的表单元素包起来，例如 input
+        3、通过 ValidationProvider 配置验证规则
             name   配置字段的提示名称
             rules  配置校验规则
+                内置的规则：https://logaretm.github.io/vee-validate/guide/rules.html#rules
+                自定义规则：
+                单个验证规则：rules="required"
+                多个验证规则：rules="required|length:4"
             v-slot="{ errors }" 获取校验失败的错误提示消息
         -->
-        <ValidationObserver>
-            <ValidationProvider name="手机号" rules="required" v-slot="{ errors }">
+        <ValidationObserver  ref="form">
+            <ValidationProvider name="手机号" rules="required">
                 <van-field
                 v-model="user.mobile"
                 left-icon="graphic"
@@ -18,7 +23,7 @@
                 clearable
                 >
                 </van-field>
-                <span>{{ errors[0] }}</span>
+
             </ValidationProvider>
 
             <ValidationProvider>
@@ -78,7 +83,18 @@ export default {
     async onLogin () {
       // 1. 获取表单数据
       const user = this.user
+
       // 2. 表单验证
+      // this.$refs.form.validate().then(success => {
+      //   if (!success) {
+      //   }
+      // })
+      const success = await this.$refs.form.validate()
+      if (!success) {
+        console.log('表单验证失败')
+        // 获取验证失败的错误消息，轻提示
+        return
+      }
 
       // 开启登陆中的 loading
       this.$toast.loading({
