@@ -15,7 +15,7 @@
             v-slot="{ errors }" 获取校验失败的错误提示消息
         -->
         <ValidationObserver  ref="form">
-            <ValidationProvider name="手机号" rules="required" immediate>
+            <ValidationProvider name="手机号" rules="required|mobile" immediate>
                 <van-field
                 v-model="user.mobile"
                 left-icon="graphic"
@@ -26,7 +26,7 @@
 
             </ValidationProvider>
 
-            <ValidationProvider  name="验证码" rules="required" immediate>
+            <ValidationProvider  name="验证码" rules="required|code" immediate>
                 <van-field
                 v-model="user.code"
                 type="password"
@@ -120,7 +120,7 @@ export default {
         console.log(res)
         this.$toast.success('登陆成功')
       } catch (err) {
-        this.$toast.fail('登陆失败')
+        this.$toast.fail('登陆失败,手机号或验证码不正确')
       }
     },
 
