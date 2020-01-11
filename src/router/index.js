@@ -9,7 +9,8 @@ const routes = [
     name: 'login',
     // @是src的别名 VueCli项目中特俗提供的
     component: () => import('@/views/login')
-  }, {
+  },
+  {
     path: '/',
     // 有默认子路由的不需要配置 name
     // name: 'tab-bar',
@@ -36,6 +37,11 @@ const routes = [
         component: () => import('@/views/my')
       }
     ]
+  },
+  {
+    path: '/user/:userId',
+    name: 'user',
+    component: () => import('@/views/user')
   }
 ]
 
