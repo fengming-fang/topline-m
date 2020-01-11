@@ -15,7 +15,9 @@ import { button,
   Grid, // 宫格可以在水平方向上把页面分隔成等宽度的区块，用于展示内容或进行页面导航
   GridItem,
   Dialog,
-  List
+  List,
+  Tab,
+  Tabs
 } from 'vant'
 
 // 注册
@@ -38,3 +40,5 @@ Vue.use(button)
   .use(GridItem)
   .use(Dialog)
   .use(List)
+  .use(Tab)
+  .use(Tabs)

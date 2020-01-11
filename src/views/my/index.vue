@@ -4,7 +4,7 @@
     <div class="user-info-wrap" v-if="$store.state.user" >
 
       <div class="base-info-wrap">
-        <div class="avatar-title-wrap">
+        <div class="avatar-title-wrap"  @click="$router.push('/user/' + user.id)">
           <van-image
             class="avatar"
             round
