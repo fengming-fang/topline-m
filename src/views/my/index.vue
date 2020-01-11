@@ -1,7 +1,7 @@
 <template>
   <div class="my-container">
           <!-- 已登录：用户信息 -->
-    <div class="user-info-wrap">
+    <div class="user-info-wrap" v-if="$store.state.user" >
 
       <div class="base-info-wrap">
         <div class="avatar-title-wrap">
@@ -38,7 +38,7 @@
     <!-- /已登录：用户信息 -->
 
     <!-- 未登录 -->
-    <div class="not-login">
+    <div v-else class="not-login" @click="$router.push('/login')">
       <div class="mobile"></div>
       <div class="text">点击登录</div>
     </div>
@@ -62,7 +62,7 @@
       <van-cell title="小智同学" is-link />
     </van-cell-group>
 
-    <van-cell-group>
+    <van-cell-group v-if="$store.state.user">
       <van-cell
         style="text-align: center;"
         title="退出登录"
