@@ -9,7 +9,7 @@
             class="avatar"
             round
             fit="cover"
-            src="user.photo"
+            :src="user.photo"
           />
           <div class="title">{{user.name}}</div>
         </div>
