@@ -2,7 +2,7 @@
  * 用户请求相关模块
  */
 import request from '@/utils/request'
-
+// 用户登陆
 export const login = data => {
   // 具体的请求代码
   return request({
@@ -22,5 +22,13 @@ export const getSmsCode = mobile => {
   return request({
     method: 'GET',
     url: `/app/v1_0/sms/codes/${mobile}`
+  })
+}
+
+// 获取当前登录用户信息
+export const getUserInfo = () => {
+  return request({
+    method: 'GET',
+    url: '/app/v1_0/user'
   })
 }
