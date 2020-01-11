@@ -8,7 +8,9 @@ import { button,
   Field,
   Button,
   Toast, // 轻提示
-  CountDown // 定时器
+  CountDown, // 定时器
+  Tabbar,
+  TabbarItem
 } from 'vant'
 
 // 注册
@@ -24,3 +26,5 @@ Vue.use(button)
   .use(Button)
   .use(Toast)
   .use(CountDown)
+  .use(Tabbar)
+  .use(TabbarItem)
