@@ -17,7 +17,8 @@
       >
 
       <!-- 文章列表 -->
-      <h2>{{ channel.name }} 的文章列表</h2>
+      <!-- <h2>{{ channel.name }} 的文章列表</h2> -->
+      <article-list :channel="channel" />
       <!-- /文章列表 -->
 
       </van-tab>
@@ -30,9 +31,12 @@
 
 <script>
 import { getUserChannels } from '@/api/channel'
+import ArticleList from './components/article-list'
 export default {
   name: 'HomePage',
-  components: {},
+  components: {
+    ArticleList
+  },
   props: {},
   data () {
     return {
