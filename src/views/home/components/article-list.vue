@@ -1,5 +1,8 @@
 <template>
   <div class="article-list">
+    <!-- 下拉刷新 -->
+    <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+
     <van-list
       v-model="loading"
       :finished="finished"
@@ -12,6 +15,8 @@
         :title="article.title"
       />
     </van-list>
+
+    </van-pull-refresh>
   </div>
 </template>
 
@@ -33,7 +38,9 @@ export default {
       list: [],
       loading: false,
       finished: false,
-      timestamp: null // 用于获取下一页数据的页码（时间戳）
+      timestamp: null, // 用于获取下一页数据的页码（时间戳）
+      count: 0,
+      isLoading: false
     }
   },
   computed: {},
@@ -41,6 +48,22 @@ export default {
   created () {},
   mounted () {},
   methods: {
+
+    async onRefresh () {
+      // 下拉刷新组件会自动开启 loading
+      // 1. 请求数据
+      const { data } = await getArticlesByChannel({
+        channel_id: this.channel.id,
+        timestamp: Date.now(), // 下拉刷新永远请求获取最新数据
+        with_top: 1
+      })
+      // 2. 将数据放到列表的顶部
+      const { results } = data.data
+      this.list.unshift(...results)
+      // 3. 关闭下拉刷新的 loading
+      this.isLoading = false
+      this.$toast(`更新了${results.length}条数据`)
+    },
     async onLoad () {
       // 1. 请求获取数据
       const { data } = await getArticlesByChannel({
