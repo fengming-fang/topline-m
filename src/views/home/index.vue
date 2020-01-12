@@ -10,6 +10,15 @@
       title 标签标题
      -->
     <van-tabs v-model="active">
+
+      <!-- 通过插槽把面包按钮放进去 -->
+      <van-icon
+        class="wap-nav"
+        slot="nav-right"
+        name="wap-nav"
+        @click="isChannelEditShow = true"
+      />
+
       <van-tab
         :title="channel.name"
         v-for="channel in userChannels"
@@ -51,7 +60,7 @@ export default {
     return {
       active: 0, // 控制激活的标签页
       userChannels: [], // 用户频道列表
-      isChannelEditShow: true // 这里我们先设置为 true 就能看到弹窗的页面了
+      isChannelEditShow: false // 这里我们先设置为 true 就能看到弹窗的页面了
     }
   },
   computed: {},
@@ -79,6 +88,14 @@ export default {
   padding-top: 90px;
   padding-bottom: 50px;
 }
+.wap-nav {
+  position: fixed;
+  right: 0;
+  line-height: 49px;
+  background: #fff;
+  opacity: .8;
+}
+
 /deep/ .van-tabs__wrap {
   position: fixed;
   top: 46px;
