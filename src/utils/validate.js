@@ -30,6 +30,7 @@ extend('mobile', {
   message: '手机号码格式错误'
 })
 
+// 添加验证密码
 extend('code', {
   validate: value => {
     return /^\d{6}$/.test(value)
