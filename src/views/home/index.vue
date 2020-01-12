@@ -20,11 +20,20 @@
       <!-- <h2>{{ channel.name }} 的文章列表</h2> -->
       <article-list :channel="channel" />
       <!-- /文章列表 -->
-
       </van-tab>
 
     </van-tabs>
     <!-- /频道列表 -->
+
+    <!-- 弹出层组件 -->
+    <van-popup
+    v-model="isChannelEditShow"
+    position="bottom"
+    closeable
+    close-icon-position="top-left"
+    :style="{ height: '100%' }"
+    />
+    <!-- /弹出层组件 -->
   </div>
 
 </template>
@@ -41,7 +50,8 @@ export default {
   data () {
     return {
       active: 0, // 控制激活的标签页
-      userChannels: [] // 用户频道列表
+      userChannels: [], // 用户频道列表
+      isChannelEditShow: true // 这里我们先设置为 true 就能看到弹窗的页面了
     }
   },
   computed: {},

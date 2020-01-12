@@ -18,7 +18,8 @@ import { button,
   List,
   Tab,
   Tabs,
-  PullRefresh // 下拉刷新
+  PullRefresh, // 下拉刷新
+  Popup // 弹出层
 } from 'vant'
 
 // 注册
@@ -44,3 +45,4 @@ Vue.use(button)
   .use(Tab)
   .use(Tabs)
   .use(PullRefresh)
+  .use(Popup)
