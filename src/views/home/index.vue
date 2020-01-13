@@ -41,7 +41,9 @@
     closeable
     close-icon-position="top-left"
     :style="{ height: '100%' }"
-    />
+    >
+    <channel-edit />
+    </van-popup>
     <!-- /弹出层组件 -->
   </div>
 
@@ -50,10 +52,12 @@
 <script>
 import { getUserChannels } from '@/api/channel'
 import ArticleList from './components/article-list'
+import ChannelEdit from './components/channel-edit'
 export default {
   name: 'HomePage',
   components: {
-    ArticleList
+    ArticleList,
+    ChannelEdit
   },
   props: {},
   data () {
@@ -91,9 +95,9 @@ export default {
 .wap-nav {
   position: fixed;
   right: 0;
-  line-height: 49px;
+  line-height: 44px;
   background: #fff;
-  opacity: .8;
+  opacity: .7;
 }
 
 /deep/ .van-tabs__wrap {
@@ -103,4 +107,5 @@ export default {
   right: 0;
   z-index: 1;
 }
+
 </style>
