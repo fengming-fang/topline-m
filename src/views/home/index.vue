@@ -45,6 +45,7 @@
       <channel-edit
         :user-channels="userChannels"
         @switch="onChannelSwitch"
+        :active="active"
       />
     </van-popup>
     <!-- /弹出层组件 -->
